@@ -96,7 +96,6 @@ let Car = esodm.model('Car', carSchema);
   - [`Hooks and Middleware`](#hooks-and-middleware)
   - [`Static and Instance Methods`](#static-and-instance-methods)
   - [`Sync Mapping`](#sync-mapping)
-  - [`Validators`] (#validators)
 
 ### Core
 Core methods can be called directly on the Elasticsearch ODM instance. These include methods to configure, connect, and get information from your Elasticsearch database. Most methods act upon the [official Elasticsearch client](https://www.npmjs.com/package/elasticsearch).
@@ -576,11 +575,6 @@ elasticsearch.connect({
   syncMapping: false
 });
 ```
-
-#### Validators
-
-This ODM allows you to use the same validators as in Mongoose
-
 
 
 ### CHANGLELOG
