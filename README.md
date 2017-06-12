@@ -577,7 +577,8 @@ elasticsearch.connect({
 });
 ```
 
-#### Validators [validators]
+#### Validators
+
 This ODM allows you to use the same validators as in Mongoose
 
 
