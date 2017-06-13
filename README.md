@@ -97,7 +97,7 @@ let Car = esodm.model('Car', carSchema);
   - [`Static and Instance Methods`](#static-and-instance-methods)
   - [`Sync Mapping`](#sync-mapping)
 - [Validators](#validators)
-  - [`maxlength & minlength`](#maxlength-&-minlength)
+  - [`maxlength & minlength`](#maxlength-minlength)
   - [`enum`](#enum)
 
 ### Core
