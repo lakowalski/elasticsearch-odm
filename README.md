@@ -96,6 +96,7 @@ let Car = esodm.model('Car', carSchema);
   - [`Hooks and Middleware`](#hooks-and-middleware)
   - [`Static and Instance Methods`](#static-and-instance-methods)
   - [`Sync Mapping`](#sync-mapping)
+- [Validators](#validators)
 
 ### Core
 Core methods can be called directly on the Elasticsearch ODM instance. These include methods to configure, connect, and get information from your Elasticsearch database. Most methods act upon the [official Elasticsearch client](https://www.npmjs.com/package/elasticsearch).
@@ -575,6 +576,24 @@ elasticsearch.connect({
   syncMapping: false
 });
 ```
+
+### Validatos
+
+We also implemented the built-in functionality of Mongoose : maxlength, minlength, enum, min, max, match, required.
+
+#### maxlength & minlength : 
+
+You can use maxlength & minlength only with text, string and keyword type :
+
+```js
+
+foo : {type : 'text', maxlength : 32},
+bar : {type : 'keyword', minlength : 6},
+baz : {type : 'keyword', maxlength : 56, minlength: 5}
+
+```
+
+
 
 
 ### CHANGLELOG
