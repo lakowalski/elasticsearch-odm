@@ -98,6 +98,7 @@ let Car = esodm.model('Car', carSchema);
   - [`Sync Mapping`](#sync-mapping)
 - [Validators](#validators)
   - [`maxlength & minlength`](#maxlength-&-minlength)
+  - [`enum`](#enum)
 
 ### Core
 Core methods can be called directly on the Elasticsearch ODM instance. These include methods to configure, connect, and get information from your Elasticsearch database. Most methods act upon the [official Elasticsearch client](https://www.npmjs.com/package/elasticsearch).
@@ -582,9 +583,9 @@ elasticsearch.connect({
 
 We also implemented the built-in functionality of Mongoose : maxlength, minlength, enum, min, max, match, required.
 
-#### maxlength & minlength : 
+#### maxlength & minlength 
 
-You can use maxlength & minlength only with text, string and keyword type :
+You can use maxlength & minlength only with text, string and keyword type when you define your schema:
 
 ```js
 
@@ -593,7 +594,18 @@ bar : {type : 'keyword', minlength : 6},
 baz : {type : 'keyword', maxlength : 56, minlength: 5}
 
 ```
+#### enum
 
+You can use enum only with text, string and keyword type when you define your schema:
+
+```js
+
+foo : {type : 'text', enum : ['bar', 'baz]'
+
+// foo can only take two values : bar and baz
+
+```
+enum must always be an array even if it has one element
 
 
 
