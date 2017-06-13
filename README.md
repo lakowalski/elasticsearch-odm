@@ -99,6 +99,7 @@ let Car = esodm.model('Car', carSchema);
 - [Validators](#validators)
   - [`maxlength & minlength`](#maxlength-&-minlength)
   - [`enum`](#enum)
+  - [`min & max`](#min-&-max)
 
 ### Core
 Core methods can be called directly on the Elasticsearch ODM instance. These include methods to configure, connect, and get information from your Elasticsearch database. Most methods act upon the [official Elasticsearch client](https://www.npmjs.com/package/elasticsearch).
@@ -581,7 +582,7 @@ elasticsearch.connect({
 
 ### Validators
 
-We also implemented the built-in functionality of Mongoose : maxlength, minlength, enum, min, max, match, required.
+We also implemented the built-in functionalities of Mongoose : maxlength, minlength, enum, min, max, match, required.
 
 #### maxlength & minlength 
 
@@ -607,7 +608,17 @@ foo : {type : 'text', enum : ['bar', 'baz]'
 ```
 enum must always be an array even if it has one element
 
+#### min & max 
 
+You can use min & max only with numbers : long, integer, etc ... :
+
+```js
+
+foo : {type : 'long', max : 5},
+bar : {type : 'integer', min : 2}
+
+```
+ 
 
 ### CHANGLELOG
 [See here.](https://github.com/zackiles/elasticsearch-odm/blob/master/CHANGELOG.md)
