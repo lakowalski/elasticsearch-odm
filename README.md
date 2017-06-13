@@ -97,7 +97,7 @@ let Car = esodm.model('Car', carSchema);
   - [`Static and Instance Methods`](#static-and-instance-methods)
   - [`Sync Mapping`](#sync-mapping)
 - [Validators](#validators)
-  - [maxlength & minlength](#maxlength-&-minlength)
+  - [`maxlength & minlength`](#maxlength-&-minlength)
 
 ### Core
 Core methods can be called directly on the Elasticsearch ODM instance. These include methods to configure, connect, and get information from your Elasticsearch database. Most methods act upon the [official Elasticsearch client](https://www.npmjs.com/package/elasticsearch).
