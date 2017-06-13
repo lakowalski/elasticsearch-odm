@@ -101,6 +101,7 @@ let Car = esodm.model('Car', carSchema);
   - [`enum`](#enum)
   - [`min & max`](#min-&-max)
   - [`match`](#match)
+  - [`required`](#required)
 
 ### Core
 Core methods can be called directly on the Elasticsearch ODM instance. These include methods to configure, connect, and get information from your Elasticsearch database. Most methods act upon the [official Elasticsearch client](https://www.npmjs.com/package/elasticsearch).
@@ -628,7 +629,15 @@ match allows you to only accept string that match a regex, you can use it only w
 foo : {type : 'text', match : /^a/}
 
 ``` 
+#### required
 
+required allows you to set a field as mandatory : 
+
+```js
+
+foo : {type : 'integer', required : true}
+
+```
 
 ### CHANGLELOG
 [See here.](https://github.com/zackiles/elasticsearch-odm/blob/master/CHANGELOG.md)
