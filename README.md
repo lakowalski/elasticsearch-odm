@@ -1,11 +1,7 @@
 Elasticsearch ODM
 =========
 
-[![Join the chat at https://gitter.im/bloublou2014/elasticsearch-odm](https://badges.gitter.im/bloublou2014/elasticsearch-odm.svg)](https://gitter.im/bloublou2014/elasticsearch-odm?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-[![npm version](https://badge.fury.io/js/elasticsearch-odm-5.svg)](http://badge.fury.io/js/elasticsearch-odm-5)
-[![Build Status](https://travis-ci.org/bloublou2014/elasticsearch-odm.svg?branch=es-5.x)](https://travis-ci.org/bloublou2014/elasticsearch-odm)
-[![Dependency Status](https://david-dm.org/bloublou2014/elasticsearch-odm/es-5.x.svg)](https://david-dm.org/bloublou2014/elasticsearch-odm/es-5.x)
-[![Dev Dependency Status](https://david-dm.org/bloublou2014/elasticsearch-odm/es-5.x/dev-status.svg)](https://david-dm.org/bloublou2014/elasticsearch-odm/es-5.x#info=devDependencies)
+[![Build Status](https://travis-ci.org/Epsilonn2/elasticsearch-odm.svg?branch=master)](https://travis-ci.org/Epsilonn2/elasticsearch-odm)
 
 ***Like Mongoose but for Elasticsearch.*** Define models, preform CRUD operations, and build advanced search queries. Most commands and functionality that exist in Mongoose exist in this library. All asynchronous functions use Bluebird Promises instead of callbacks.
 
@@ -17,7 +13,7 @@ This is currently the only ODM/ORM library that exists for Elasticsearch on Node
 If you currently have [npm elasticsearch](https://www.npmjs.com/package/elasticsearch) installed, you can remove it and access it from [client](client---elasticsearch) in this library if you still need it.
 
 ```sh
-$ npm install elasticsearch-odm
+$ npm install Epsilonn2/elasticsearch-odm
 ```
 
 ### Features
@@ -100,6 +96,12 @@ let Car = esodm.model('Car', carSchema);
   - [`Hooks and Middleware`](#hooks-and-middleware)
   - [`Static and Instance Methods`](#static-and-instance-methods)
   - [`Sync Mapping`](#sync-mapping)
+- [Validators](#validators)
+  - [`maxlength & minlength`](#maxlength-&-minlength)
+  - [`enum`](#enum)
+  - [`min & max`](#min-&-max)
+  - [`match`](#match)
+  - [`required`](#required)
 
 ### Core
 Core methods can be called directly on the Elasticsearch ODM instance. These include methods to configure, connect, and get information from your Elasticsearch database. Most methods act upon the [official Elasticsearch client](https://www.npmjs.com/package/elasticsearch).
@@ -578,6 +580,63 @@ elasticsearch.connect({
   index: 'my-index',
   syncMapping: false
 });
+```
+
+### Validators
+
+We also implemented the built-in functionalities of Mongoose : maxlength, minlength, enum, min, max, match, required.
+
+#### maxlength & minlength 
+
+You can use maxlength & minlength only with text, string and keyword types when you define your schema:
+
+```js
+
+foo : {type : 'text', maxlength : 32},
+bar : {type : 'keyword', minlength : 6},
+baz : {type : 'keyword', maxlength : 56, minlength: 5}
+
+```
+#### enum
+
+You can use enum only with text, string and keyword types when you define your schema:
+
+```js
+
+foo : {type : 'text', enum : ['bar', 'baz]'
+
+// foo can only take two values : bar and baz
+
+```
+enum must always be an array even if it has one element
+
+#### min & max 
+
+You can use min & max only with numbers : long, integer, etc ... :
+
+```js
+
+foo : {type : 'long', max : 5},
+bar : {type : 'integer', min : 2}
+
+```
+
+#### match
+
+match allows you to only accept string that match a regex, you can use it only with text, string and keyword types :
+
+```js
+foo : {type : 'text', match : /^a/}
+
+``` 
+#### required
+
+required allows you to set a field as mandatory : 
+
+```js
+
+foo : {type : 'integer', required : true}
+
 ```
 
 ### CHANGLELOG
